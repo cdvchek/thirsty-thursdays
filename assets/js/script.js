@@ -11,3 +11,15 @@ function pageDisplay(page){
     }
 }
 //page handling finished - carsdan dvorachek
+
+//modal initialization - carsdan dvorachek
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+  });
+
+/* See Recipe Modal Trigger Button
+<a class="waves-effect waves-light btn modal-trigger" href="#modal1">See Recipe</a>
+*/
+
+//modal initialization finished - carsdan dvorachek
