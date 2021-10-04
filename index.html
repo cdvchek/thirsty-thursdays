@@ -4,8 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
+=======
+    <title>Thirsty Thursdays</title>
+    <!-- Linking Materialize -->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+>>>>>>> dev
 </head>
 <body>
     <header>
@@ -24,9 +33,14 @@
 
             <!-- page 1 contents -->
             <div class="page-1">
+<<<<<<< HEAD
 
                 <input type="text" class="form-input w-100" id="cocktail-input" name="cocktail-input" placeholder="Enter ingredient name" />
                 <button class="btn btn-info" id="add-btn">Add</button>
+=======
+                <input type="text" id="ingredientInput">
+                <button for="ingredientInput" type="submit" id="searchBtn">search</button>
+>>>>>>> dev
                 <ul id="prev-ingred"></ul>
             </div>
         
@@ -42,8 +56,30 @@
 
         <!-- random movie recommendation -->
         <div class="page-2" id="random-movie"></div>
+
+        <!-- Total Recipe Modal -->
+        <div id="modal1" class="modal">
+
+            <!-- Main Content -->
+            <div class="modal-content">
+                <h4 id="mod-name"></h4>
+                <ul id="mod-ingr-list"></ul>
+                <img id="mod-image" src="#" alt="picture of cocktail/meal">
+                <div id="mod-instructions">
+                </div>
+            </div>
+
+            <!-- Close button -->
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
     </main>
+<<<<<<< HEAD
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script typr="text/javascript" src="script.js"></script>
+=======
+    <script src="./assets/js/script.js"></script>
+>>>>>>> dev
 </body>
 </html>
