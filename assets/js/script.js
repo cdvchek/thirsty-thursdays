@@ -51,3 +51,5 @@ function getApi(url) {
 }
 
 searchBtn.addEventListener('click', getApi);
+
+// get api function -marco 
