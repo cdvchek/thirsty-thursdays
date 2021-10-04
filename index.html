@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Thirsty Thursdays</title>
+    <!-- Linking Materialize -->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
     <header>
@@ -38,6 +43,24 @@
 
         <!-- random movie recommendation -->
         <div class="page-2" id="random-movie"></div>
+
+        <!-- Total Recipe Modal -->
+        <div id="modal1" class="modal">
+
+            <!-- Main Content -->
+            <div class="modal-content">
+                <h4 id="mod-name"></h4>
+                <ul id="mod-ingr-list"></ul>
+                <img id="mod-image" src="#" alt="picture of cocktail/meal">
+                <div id="mod-instructions">
+                </div>
+            </div>
+
+            <!-- Close button -->
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
     </main>
     <script src="./assets/js/script.js"></script>
 </body>
