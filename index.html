@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
@@ -23,9 +24,13 @@
 
             <!-- page 1 contents -->
             <div class="page-1">
-                <input type="text">
+
+                <input type="text" class="form-input w-100" id="cocktail-input" name="cocktail-input" placeholder="Enter ingredient name" />
+                <button class="btn btn-info" id="add-btn">Add</button>
                 <ul id="prev-ingred"></ul>
             </div>
+        
+            <ul id="cocktail-list"></ul>
 
             <!-- page 2 contents -->
             <div class="page-2">
@@ -38,5 +43,7 @@
         <!-- random movie recommendation -->
         <div class="page-2" id="random-movie"></div>
     </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script typr="text/javascript" src="script.js"></script>
 </body>
 </html>
