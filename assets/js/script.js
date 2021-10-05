@@ -39,40 +39,72 @@ function getApi(url) {
             for (let i = 0; i < data.drinks.length; i++) {
                 var idUrl = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + data.drinks[i].idDrink;
                 console.log(idUrl);
+             
+            
                 fetch(idUrl)
                     .then(function (response) {
                         return response.json();
                     })
                     .then(function (data) {
-                        // display cocktail info onto the cocktail Mod
+    // display cocktail info onto the cocktail Mod
                         console.log(data);
+                        // create new modal element
+                        var newMod = document.createElement("div");
+                        newMod.classList.add("modal");
+                        newMod.id = "modal" + (i + 1);
+                        document.body.appendChild(newMod);
                         // display corresponding drink name 
                         let drinkName = data.drinks[0].strDrink;
                         cocktailModHeader = drinkName;
+                        // create modal element
+                        modTitle = document.createElement("h4");
+                        modTitle.textContent = cocktailModHeader;
+                        newMod.appendChild(modTitle);
+                        
+
                         console.log(cocktailModHeader);
                         // display corresponding cocktail image onto cocktail mod
                         let modImageSource = data.drinks[0].strDrinkThumb;
                         cocktailModImage.src = modImageSource;
                         console.log(cocktailModImage.src);
+                        // create modal element
+                        modImageDisplay = document.createElement("img");
+                        modImageDisplay.src = cocktailModImage.src;
+                        newMod.appendChild(modImageDisplay);
+
                         // display instructions to mod
                         let modInstructions = data.drinks[0].strInstructions;
                         cocktailModInstructions = modInstructions;
                         console.log(cocktailModInstructions);
+                        // create modal element
+                        modInstructionsDisplay = document.createElement("p");
+                        modInstructionsDisplay.textContent = cocktailModInstructions;
+                        newMod.appendChild(modInstructionsDisplay);
+                        // create ul for modal
+                        modIngredientsDisplayList = document.createElement("ul");
+                        newMod.appendChild(modIngredientsDisplayList);
                         // display ingredients and amounts to mod
                         for (let i = 0; i < 15; i++) {
                             let listItem = data.drinks[0]["strIngredient" + (i + 1)];
                             let listItemAmount = data.drinks[0]["strMeasure" + (i + 1)];
-                            if ((listItem !== null) || (listItem !== "")){
-                                var node = document.createElement('li');
-                                node.appendChild(document.createTextNode(listItem));
-                                modIngredientList.appendChild(node);
-                                console.log(node)
+                            // fix empty strings displaying 
+                            if ((listItem !== null)){
+                                modIngredientItem = document.createElement("li");
+                                modIngredientItem.textContent = listItem;
+                                modIngredientsDisplayList.appendChild(modIngredientItem);
+                                // var node = document.createElement('li');
+                                // node.appendChild(document.createTextNode(listItem));
+                                // modIngredientList.appendChild(node);
+                                // console.log(node)
                             }
                             if (listItemAmount !== null){
-                                var node = document.createElement('li');
-                                node.appendChild(document.createTextNode(listItemAmount));
-                                modIngredientList.appendChild(node);
-                                console.log(node)
+                                modAmountItem = document.createElement("li");
+                                modAmountItem.textContent = listItemAmount;
+                                modIngredientsDisplayList.appendChild(modAmountItem);
+                                // var node = document.createElement('li');
+                                // node.appendChild(document.createTextNode(listItemAmount));
+                                // modIngredientList.appendChild(node);
+                                // console.log(node)
                             }
                             
                         }
@@ -93,7 +125,7 @@ function getApi(url) {
 
                         var seeRecipeBtn = document.createElement('a');
                         seeRecipeBtn.setAttribute('class','waves-effect waves-light btn modal-trigger');
-                        seeRecipeBtn.setAttribute('href','#modal1');
+                        seeRecipeBtn.setAttribute('href','#modal' + (i + 1));
                         seeRecipeBtn.textContent = 'See Recipe';
                         drinkOverviewLiEl.append(seeRecipeBtn);
 
