@@ -17,6 +17,11 @@ pageDisplay(1);
 //search list
 // get api function -marco 
 var searchBtn = document.getElementById('searchBtn');
+var modIngredientList = document.getElementById('mod-ingr-list');
+var cocktailModHeader = document.getElementById('mod-name');
+var cocktailModImage = document.getElementById('mod-image');
+var cocktailModInstructions = document.getElementById('mod-instructions');
+
 
 function getApi(url) {
     var ingredientInput = document.querySelector('.ingredients'); //first element of ingredients list
@@ -40,13 +45,48 @@ function getApi(url) {
                         return response.json();
                     })
                     .then(function (data) {
+                        // display cocktail info onto the cocktail Mod
                         console.log(data);
-                        console.log("helloworld");
+                        // display corresponding drink name 
+                        let modHeader = data.drinks[0].strDrink;
+                        cocktailModHeader = modHeader;
+                        console.log(cocktailModHeader);
+                        // display corresponding cocktail image onto cocktail mod
+                        let modImageSource = data.drinks[0].strDrinkThumb;
+                        cocktailModImage.src = modImageSource;
+                        console.log(cocktailModImage.src);
+                        // display instructions to mod
+                        let modInstructions = data.drinks[0].strInstructions;
+                        cocktailModInstructions = modInstructions;
+                        console.log(cocktailModInstructions);
+                        // display ingredients and amounts to mod
                         for (let i = 0; i < 15; i++) {
-                        console.log(data.drinks[0]["strIngredient" + (i + 1)])
+                            let listItem = data.drinks[0]["strIngredient" + (i + 1)];
+                            let listItemAmount = data.drinks[0]["strMeasure" + (i + 1)];
+                            if (listItem === null) {
+                                return
+                            }
+                            else if (listItem === "") {
+                                return
+                            }
+                            else {
+                                var node = document.createElement('li');
+                                node.appendChild(document.createTextNode(listItem));
+                                modIngredientList.appendChild(node);
+                                console.log(node)
+                            }
+                            if (listItemAmount === null) {
+                                return
+                            } else {
+                                var node = document.createElement('li');
+                                node.appendChild(document.createTextNode(listItemAmount));
+                                modIngredientList.appendChild(node);
+                                console.log(node)
+                            }
+
                         }
-                        
                     });
+
 
             }
         });
@@ -54,13 +94,13 @@ function getApi(url) {
 }
 
 searchBtn.addEventListener('click', getApi);
+// get api function -marco  
 
-// get api function -marco 
 //modal initialization - carsdan dvorachek
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
-  });
+});
 
 /* See Recipe Modal Trigger Button
 <a class="waves-effect waves-light btn modal-trigger" href="#modal1">See Recipe</a>
@@ -75,28 +115,32 @@ var cocktailArr = [];
 
 // create function to handle form submission
 function handleFormSubmit(event) {
-  event.preventDefault();
+    event.preventDefault();
 
-  // select form element by its `name` attribute and get its value
-  var cocktailItem = $('input[name="cocktail-input"]').val();
+    // select form element by its `name` attribute and get its value
+    var cocktailItem = $('input[name="cocktail-input"]').val();
 
-  // if there's nothing in the form entered, don't print to the page
-  if (!cocktailItem || cocktailArr.includes(cocktailItem)) {
-    console.log("Error, can't add ingredient!");
-    return; 
-  }
+    // if there's nothing in the form entered, don't print to the page
+    if (!cocktailItem || cocktailArr.includes(cocktailItem)) {
+        console.log("Error, can't add ingredient!");
+        return;
+    }
 
-  cocktailArr.push(cocktailItem);
+    cocktailArr.push(cocktailItem);
 
 
 
   // print to the page
   cocktailListEl.append('<li class="ingredients">' + cocktailItem + '</li>');
 
-  // clear the form input element
-  $('input[name="cocktail-input"]').val('');
+    // clear the form input element
+    $('input[name="cocktail-input"]').val('');
 }
 
 // Create a submit event listener on the form element
 addBtnEl.on("click", handleFormSubmit);
 // Kelly
+
+
+// random movie generator -marco
+
