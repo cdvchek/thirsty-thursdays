@@ -15,13 +15,12 @@ pageDisplay(1);
 
 
 //search list
-// get api function -marco 
+// get api function - marco 
 var searchBtn = document.getElementById('searchBtn');
 var modIngredientList = document.getElementById('mod-ingr-list');
 var cocktailModHeader = document.getElementById('mod-name');
 var cocktailModImage = document.getElementById('mod-image');
 var cocktailModInstructions = document.getElementById('mod-instructions');
-
 
 function getApi(url) {
     var ingredientInput = document.querySelector('.ingredients'); //first element of ingredients list
@@ -48,8 +47,8 @@ function getApi(url) {
                         // display cocktail info onto the cocktail Mod
                         console.log(data);
                         // display corresponding drink name 
-                        let modHeader = data.drinks[0].strDrink;
-                        cocktailModHeader = modHeader;
+                        let drinkName = data.drinks[0].strDrink;
+                        cocktailModHeader = drinkName;
                         console.log(cocktailModHeader);
                         // display corresponding cocktail image onto cocktail mod
                         let modImageSource = data.drinks[0].strDrinkThumb;
@@ -63,28 +62,51 @@ function getApi(url) {
                         for (let i = 0; i < 15; i++) {
                             let listItem = data.drinks[0]["strIngredient" + (i + 1)];
                             let listItemAmount = data.drinks[0]["strMeasure" + (i + 1)];
-                            if (listItem === null) {
-                                return
-                            }
-                            else if (listItem === "") {
-                                return
-                            }
-                            else {
+                            if ((listItem !== null) || (listItem !== "")){
                                 var node = document.createElement('li');
                                 node.appendChild(document.createTextNode(listItem));
                                 modIngredientList.appendChild(node);
                                 console.log(node)
                             }
-                            if (listItemAmount === null) {
-                                return
-                            } else {
+                            if (listItemAmount !== null){
                                 var node = document.createElement('li');
                                 node.appendChild(document.createTextNode(listItemAmount));
                                 modIngredientList.appendChild(node);
                                 console.log(node)
                             }
-
+                            
                         }
+
+                        var cocktailRecipesListEl = document.querySelector('#cocktail-recipes');
+                        console.log('stuff: ' + cocktailRecipesListEl);
+
+                        var drinkOverviewLiEl = document.createElement('li');
+
+                        var drinkTitle = document.createElement('h3');
+                        drinkTitle.textContent = drinkName;
+                        drinkOverviewLiEl.append(drinkTitle);
+
+                        var drinkImage = document.createElement('img');
+                        drinkImageSource = data.drinks[0].strDrinkThumb;
+                        drinkImage.setAttribute('src',modImageSource);
+                        drinkOverviewLiEl.append(drinkImage);
+
+                        var seeRecipeBtn = document.createElement('a');
+                        seeRecipeBtn.setAttribute('class','waves-effect waves-light btn modal-trigger');
+                        seeRecipeBtn.setAttribute('href','#modal1');
+                        seeRecipeBtn.textContent = 'See Recipe';
+                        drinkOverviewLiEl.append(seeRecipeBtn);
+
+                        var prevBtn = document.createElement('button');
+                        prevBtn.textContent = '<';
+                        drinkOverviewLiEl.append(prevBtn);
+
+                        var nextBtn = document.createElement('button');
+                        nextBtn.textContent = '>';
+                        drinkOverviewLiEl.append(nextBtn);
+
+                        cocktailRecipesListEl.append(drinkOverviewLiEl);
+
                     });
 
 
@@ -94,7 +116,7 @@ function getApi(url) {
 }
 
 searchBtn.addEventListener('click', getApi);
-// get api function -marco  
+// get api function - marco  
 
 //modal initialization - carsdan dvorachek
 document.addEventListener('DOMContentLoaded', function () {
@@ -143,4 +165,8 @@ addBtnEl.on("click", handleFormSubmit);
 
 
 // random movie generator -marco
+// random movie generator -marco
+
+//prev and next button functions - carsdan dvorachek
+//prev and next button functions finished - carsdan dvorachek
 
