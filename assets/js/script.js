@@ -10,17 +10,19 @@ function pageDisplay(page) {
         pageHide[i].setAttribute('style', 'display:none;');
     }
 }
+pageDisplay(1);
 //page handling finished - carsdan dvorachek
 
 
 //search list
 // get api function -marco 
-var ingredientInput = document.getElementById('ingredientInput');
 var searchBtn = document.getElementById('searchBtn');
 
 function getApi(url) {
+    var ingredientInput = document.querySelector('.ingredients'); //first element of ingredients list
     // defining the search box variables
-    var searchedIngredient = ingredientInput.value;
+    console.log(ingredientInput);
+    var searchedIngredient = ingredientInput.innerText;
     var searchedUrl = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + searchedIngredient;
     // fetching the corresponding search url 
     fetch(searchedUrl)
@@ -48,6 +50,7 @@ function getApi(url) {
 
             }
         });
+        pageDisplay(2);
 }
 
 searchBtn.addEventListener('click', getApi);
@@ -88,7 +91,7 @@ function handleFormSubmit(event) {
 
 
   // print to the page
-  cocktailListEl.append('<li>' + cocktailItem + '</li>');
+  cocktailListEl.append('<li class="ingredients">' + cocktailItem + '</li>');
 
   // clear the form input element
   $('input[name="cocktail-input"]').val('');
