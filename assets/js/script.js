@@ -12,7 +12,6 @@ function pageDisplay(page) {
 }
 //page handling finished - carsdan dvorachek
 
-<<<<<<< HEAD
 
 //search list
 // get api function -marco 
@@ -52,9 +51,8 @@ function getApi(url) {
 }
 
 searchBtn.addEventListener('click', getApi);
+// get api function -marco  
 
-// get api function -marco 
-=======
 //modal initialization - carsdan dvorachek
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
@@ -66,4 +64,3 @@ document.addEventListener('DOMContentLoaded', function() {
 */
 
 //modal initialization finished - carsdan dvorachek
->>>>>>> dev
