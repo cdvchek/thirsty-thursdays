@@ -17,6 +17,12 @@ h1 {
     height: 7vh;
     margin: auto auto;
 }
+#meal-name{
+    white-space:nowrap;
+    width: 23vw;
+    height: 7vh;
+    margin: auto auto;
+}
 #mod-meal-instructions, #mod-instructions{
     margin-top: 30px;
     font-size: 100%;
