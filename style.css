@@ -1,10 +1,23 @@
 body {
-    background-image: linear-gradient(to right, #AAABB8, #25274D );
-      
+    /* background-image: linear-gradient(to right, #AAABB8, #25274D ); */
+    background-image: radial-gradient(farthest-corner at 40px 40px,
+    #aaabbb 0%, #25274d 100%);
+    background-attachment: fixed;
+    
 }
 
 h1 {
     color: white;
+}
+
+#searchBtn{
+    color: darkgray;
+    background-color: #fef9c7;
+}
+
+#search-meal-btn{
+    color: darkgray;
+    background-color: #fef9c7;
 }
 
 #cocktail-icon{
@@ -12,8 +25,38 @@ h1 {
 }
 
 #cocktail-name{
+    color: white;
     white-space:nowrap;
     width: 23vw;
     height: 7vh;
     margin: auto auto;
 }
+
+h2 {
+    color: white;
+    
+}
+
+#meal-icon {
+    padding: 10px 100px 10px 100px;
+}
+
+#meal-name {
+    color:white;
+    white-space: nowrap;
+    width: 23vw;
+    height: 7vh;
+    margin: auto auto;
+}
+
+#see-recipe-btn {
+    color: darkgray;
+    background-color: #fef9c7;
+}
+
+#see-meal-recipe-btn {
+    color: darkgray;
+    background-color: #fef9c7;
+}
+
+
