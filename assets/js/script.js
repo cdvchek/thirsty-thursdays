@@ -249,7 +249,7 @@ function getMealApi() {
                     mealInfoObj.mealName = data.meals[0].strMeal;
                     mealInfoObj.mealImage = data.meals[0].strMealThumb;
                     mealInfoObj.mealInstructions = data.meals[0].strInstructions;
-                    for (let i = 0; i < 15; i++) {
+                    for (let i = 0; i < 20; i++) {
                         let mealListItem = data.meals[0]["strIngredient" + (i + 1)];
                         let mealListItemAmount = data.meals[0]["strMeasure" + (i + 1)];
                         // fix empty strings displaying 
@@ -271,7 +271,7 @@ function getMealApi() {
                         modMealNameEl.textContent = mealsArrInfo[mealShowing].mealName;
                         modMealImageEl.setAttribute('src',mealsArrInfo[mealShowing].mealImage);
                         modMealInstructionsEl.textContent = mealsArrInfo[mealShowing].mealInstructions;
-                        for (let i = 0; i < 15; i++) {
+                        for (let i = 0; i < 20; i++) {
                             var ingredientMealEl = document.querySelector('#meal-ingr'+(i+1));
                             ingredientMealEl.setAttribute('style','display:none;');
                             numOfMealIngr = mealsArrInfo[mealShowing].mealIngredients.length;
