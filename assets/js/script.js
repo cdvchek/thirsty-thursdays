@@ -26,6 +26,8 @@ var modIngredientList = document.getElementById('mod-ingr-list');
 var cocktailModHeader = document.getElementById('mod-name');
 var cocktailModImage = document.getElementById('mod-image');
 var cocktailModInstructions = document.getElementById('mod-instructions');
+var seeRecipeBtn = document.getElementById('seeRecipeBtn');
+var main = document.getElementById('main')
 
 function getApi() {
     var ingredientInput = document.querySelector('.ingredients'); //first element of ingredients list
@@ -57,15 +59,23 @@ function getApi() {
                         var newMod = document.createElement("div");
                         newMod.classList.add("modal");
                         newMod.id = "modal" + (i + 1);
-                        document.body.appendChild(newMod);
+                        main.appendChild(newMod);
+                        var newModContent = document.createElement("div");
+                        newModContent.classList.add("modal-content");
+                        newMod.appendChild(newModContent);
                         // display corresponding drink name 
                         let drinkName = data.drinks[0].strDrink;
                         cocktailModHeader = drinkName;
                         // create modal element
                         modTitle = document.createElement("h4");
                         modTitle.textContent = cocktailModHeader;
-                        newMod.appendChild(modTitle);
-
+                        newModContent.appendChild(modTitle);
+                        // see recipe button 
+                        
+                        // document.addEventListener('DOMContentLoaded', function() {
+                        //     var elems = document.querySelectorAll('.modal');
+                        //     var instances = M.Modal.init(elems, options);
+                        // });
 
                         console.log(cocktailModHeader);
                         // display corresponding cocktail image onto cocktail mod
@@ -75,7 +85,7 @@ function getApi() {
                         // create modal element
                         modImageDisplay = document.createElement("img");
                         modImageDisplay.src = cocktailModImage.src;
-                        newMod.appendChild(modImageDisplay);
+                        newModContent.appendChild(modImageDisplay);
 
                         // display instructions to mod
                         let modInstructions = data.drinks[0].strInstructions;
@@ -84,10 +94,10 @@ function getApi() {
                         // create modal element
                         modInstructionsDisplay = document.createElement("p");
                         modInstructionsDisplay.textContent = cocktailModInstructions;
-                        newMod.appendChild(modInstructionsDisplay);
+                        newModContent.appendChild(modInstructionsDisplay);
                         // create ul for modal
                         modIngredientsDisplayList = document.createElement("ul");
-                        newMod.appendChild(modIngredientsDisplayList);
+                        newModContent.appendChild(modIngredientsDisplayList);
                         // display ingredients and amounts to mod
                         for (let i = 0; i < 15; i++) {
                             let listItem = data.drinks[0]["strIngredient" + (i + 1)];
@@ -113,12 +123,17 @@ function getApi() {
                             }
                         }
                     });
+                    
             }
+            
+            
+            // get api function - marco  
+
             //prev and next button functions - carsdan dvorachek
 
             drinkNumber = data.drinks.length;
             for (let i = 0; i < drinkNumber; i++) {
-                let drinkObj = 
+                let drinkObj =
                 {
                     drinkName: "",
                     drinkImage: ""
@@ -130,30 +145,30 @@ function getApi() {
             console.log(drinksArr);
             console.log("array of my drinks: " + drinksArr[0].drinkName);
 
-            
+
             var cocktailNameEl = document.querySelector('#cocktail-name');
             var cocktailImageEl = document.querySelector('#cocktail-image');
             var listMarkerEl = document.querySelector('#list-marker');
             var listMarkerLengthEl = document.querySelector('#list-marker-length');
 
             listMarkerLengthEl.textContent = drinkNumber;
-            
-            function displayFirstRecipe(){
+
+            function displayFirstRecipe() {
                 cocktailNameEl.textContent = drinksArr[0].drinkName;
-                cocktailImageEl.setAttribute('src',drinksArr[0].drinkImage);
+                cocktailImageEl.setAttribute('src', drinksArr[0].drinkImage);
                 drinkShowing = 0;
                 listMarkerEl.textContent = drinkShowing + 1;
             }
-            
-            function displayLastRecipe(){
-                cocktailNameEl.textContent = drinksArr[drinkNumber-1].drinkName;
-                cocktailImageEl.setAttribute('src',drinksArr[drinkNumber-1].drinkImage);
+
+            function displayLastRecipe() {
+                cocktailNameEl.textContent = drinksArr[drinkNumber - 1].drinkName;
+                cocktailImageEl.setAttribute('src', drinksArr[drinkNumber - 1].drinkImage);
                 drinkShowing = drinkNumber - 1;
                 listMarkerEl.textContent = drinkShowing + 1;
             }
-            
-            function displayNextRecipe(){
-                if((drinkShowing+1) >= drinkNumber){
+
+            function displayNextRecipe() {
+                if ((drinkShowing + 1) >= drinkNumber) {
                     displayFirstRecipe();
                 } else {
                     drinkShowing++;
@@ -161,9 +176,9 @@ function getApi() {
                     listMarkerEl.textContent = drinkShowing + 1;
                 }
             }
-            
-            function displayPrevRecipe(){
-                if((drinkShowing-1) <= -1){
+
+            function displayPrevRecipe() {
+                if ((drinkShowing - 1) <= -1) {
                     displayLastRecipe();
                 } else {
                     drinkShowing--;
@@ -171,18 +186,19 @@ function getApi() {
                     listMarkerEl.textContent = drinkShowing + 1;
                 }
             }
-            
-            function displayRecipe(index){
+
+            function displayRecipe(index) {
                 cocktailNameEl.textContent = drinksArr[index].drinkName;
-                cocktailImageEl.setAttribute('src',drinksArr[index].drinkImage);
+                cocktailImageEl.setAttribute('src', drinksArr[index].drinkImage);
                 drinkShowing = index;
                 listMarkerEl.textContent = drinkShowing + 1;
             }
             var prevButtonEl = $('.prev-btn');
             var nextButtonEl = $('.next-btn');
 
-            prevButtonEl.on('click',displayPrevRecipe);
-            nextButtonEl.on('click',displayNextRecipe);
+            prevButtonEl.on('click', displayPrevRecipe);
+            nextButtonEl.on('click', displayNextRecipe);
+            
 
             displayFirstRecipe();
             //prev and next button functions finished - carsdan dvorachek

@@ -18,7 +18,7 @@
         <h1>Thirsty Thursdays</h1>
     </header>
 
-    <main>
+    <main id="main">
 
         <!-- cocktail card -->
         <div class="big-card" id="cocktail-card">
@@ -51,7 +51,7 @@
         <div class="page-2" id="random-movie"></div>
 
         <!-- Total Recipe Modal -->
-        <div id="modal1" class="modal">
+        <div id="modal" class="modal">
 
             <!-- Main Content -->
             <div class="modal-content">
@@ -67,7 +67,12 @@
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
             </div>
         </div>
+        <!-- <button data-target="modal1" class="btn modal-trigger">Modal</button> -->
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">See Recipe</a>
+        
+        <!-- <button id="seeRecipeBtn">See Recipe</button> -->
     </main>
+    
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
