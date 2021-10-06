@@ -17,3 +17,25 @@ h1 {
     height: 7vh;
     margin: auto auto;
 }
+#mod-meal-instructions, #mod-instructions{
+    margin-top: 30px;
+    font-size: 100%;
+}
+#mod-ingr-list {
+    font-size: large;
+}
+#mod-meal-ingr-list {
+    font-size: large;
+}
+
+#mod-meal-name, #mod-name{
+    margin-bottom: 50px;
+    font-size: 5vh;
+}
+
+#modal1, #modal2{
+    background-color: #121212;
+    color: rgb(183, 171, 192);
+    font-weight:bolder;
+    
+}
