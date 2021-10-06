@@ -72,10 +72,18 @@ function getApi() {
                         newModContent.appendChild(modTitle);
                         // see recipe button 
                         
-                        // document.addEventListener('DOMContentLoaded', function() {
-                        //     var elems = document.querySelectorAll('.modal');
-                        //     var instances = M.Modal.init(elems, options);
-                        // });
+                        var modFooter = document.createElement("div");
+                        modFooter.classList.add("modal-footer");
+                        newMod.appendChild(modFooter);
+                        var modA = document.createElement("a");
+                        modA.classList.add("modal-close", "waves-effect", "waves-green", "btn-flat");
+                        modA.setAttribute("href","#!");
+                        modFooter.appendChild(modA);
+                        document.addEventListener('DOMContentLoaded', function () {
+                            var elems = document.querySelectorAll('.modal');
+                            var instances = M.Modal.init(elems);
+                        });
+                        
 
                         console.log(cocktailModHeader);
                         // display corresponding cocktail image onto cocktail mod
