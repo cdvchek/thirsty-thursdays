@@ -331,6 +331,7 @@ function getMealApi() {
                             mealListMarkerEl.textContent = mealShowing + 1;
                             console.log('display next meal recipe');
                         }
+                        textFit(mealNameEl);
                     }
         
                     function displayPrevMealRecipe() {
@@ -342,6 +343,7 @@ function getMealApi() {
                             mealListMarkerEl.textContent = mealShowing + 1;
                             console.log('display prev meal recipe');
                         }
+                        textFit(mealNameEl);
                     }
         
                     function displayMealRecipe(index) {
@@ -359,6 +361,7 @@ function getMealApi() {
                     }
 
                     displayFirstMealRecipe();
+                    textFit(mealNameEl);
                     //prev and next button functions finished - carsdan dvorachek
                     });
             }
