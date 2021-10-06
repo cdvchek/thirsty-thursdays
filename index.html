@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/textFit.js"></script>
 </head>
 <body>
     <header class="container">
@@ -25,7 +26,7 @@
         <!-- chrissie sparling-cocktail card column and size of 1/3 most likely-->
     <div class="container">
         <div class="row">
-            <div class="col s4 offset-s4" id="cocktail-card">
+            <div class="col s4 offset-s2" id="cocktail-card">
 
                 <!-- cocktail icon -->
                 <img class="col s12" id="cocktail-icon" src="https://cdn0.iconfinder.com/data/icons/food-icons-rounded/110/Cocktail-512.png" alt="cocktail icon">
@@ -34,7 +35,7 @@
                 <!-- page 1 contents (these are the only changing parameters)-->
                 <div class="page-1">
                     <input type="text" id="ingredientInput" name="cocktail-input" placeholder="Enter ingredient name">
-                    <button class="btn btn-info" id="add-btn">Add</button>
+                    <!-- <button class="btn btn-info" id="add-btn">Add</button> -->
                     <button class="btn" for="ingredientInput" type="submit" id="searchBtn">search</button>
                     <ul id="cocktail-list"></ul>
                 </div>
@@ -52,12 +53,41 @@
 
                 </div>
             </div>
+
+            <div class="col s4" id="meal-card">
+
+                <!-- meal icon -->
+                <img class="col s12" id="meal-icon" src="#" alt="meal icon">
+                <hr class="col s12">
+
+                <!-- page 1 contents (these are the only changing parameters)-->
+                <div class="meal-page-1">
+                    <input type="text" id="ingredientMealInput" name="meal-input" placeholder="Enter ingredient name">
+                    <!-- <button class="btn btn-info" id="add-meal-btn">Add</button> -->
+                    <button class="btn" for="ingredientInput" type="submit" id="search-meal-btn">search</button>
+                    <ul id="meal-list"></ul>
+                </div>
+
+                <!-- page 2 contents (these are the only changing parameters) -->
+                <div class="container meal-page-2">
+                    <div class="row" id="meal-recipes">
+                        <h3 class="col s12 center-align" id="meal-name"></h3>
+                        <img class="col s12" id="meal-image" alt="meal-image">
+                    </div>
+                    <button class="btn-flat col s6 prev-meal-btn btn">&lt;</button>
+                    <button class="btn-flat col s6 next-meal-btn btn">&gt;</button>
+                    <p>( <span id="meal-list-marker"></span> / <span id="meal-list-marker-length"></span> )</p>
+                    <button data-target="modal2" class="btn modal-trigger" id="see-meal-recipe-btn">See Recipe</button>
+
+                </div>
+            </div>
+
         </div>
     </div>
         <!-- random movie recommendation -->
         <div class="page-2" id="random-movie"></div>
 
-        <!-- Total Recipe Modal-->
+        <!-- Total Cocktail Recipe Modal-->
         <div id="modal1" class="modal">
 
             <!-- Main Content -->
@@ -90,9 +120,42 @@
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
             </div>
         </div>
+
+        <div id="modal2" class="modal">
+
+            <!-- Main Content -->
+            <div class="modal-content">
+                <h4 id="mod-meal-name"></h4>
+                <ul id="mod-meal-ingr-list">
+                    <li id="meal-ingr1"></li>
+                    <li id="meal-ingr2"></li>
+                    <li id="meal-ingr3"></li>
+                    <li id="meal-ingr4"></li>
+                    <li id="meal-ingr5"></li>
+                    <li id="meal-ingr6"></li>
+                    <li id="meal-ingr7"></li>
+                    <li id="meal-ingr8"></li>
+                    <li id="meal-ingr9"></li>
+                    <li id="meal-ingr10"></li>
+                    <li id="meal-ingr11"></li>
+                    <li id="meal-ingr12"></li>
+                    <li id="meal-ingr13"></li>
+                    <li id="meal-ingr14"></li>
+                    <li id="meal-ingr15"></li>
+                </ul>
+                <img id="mod-meal-image" src="#" alt="picture of cocktail/meal">
+                <div id="mod-meal-instructions">
+                </div>
+            </div>
+
+            <!-- Close button -->
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
+
         <!-- <button data-target="modal1" class="btn modal-trigger">Modal</button> -->
-        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">See Recipe</a>
-        
+        <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">See Recipe</a> -->
         <!-- <button id="seeRecipeBtn">See Recipe</button> -->
     </main>
     

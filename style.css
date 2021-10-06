@@ -10,3 +10,10 @@ h1 {
 #cocktail-icon{
     padding: 10px 100px 10px 100px;
 }
+
+#cocktail-name{
+    white-space:nowrap;
+    width: 23vw;
+    height: 7vh;
+    margin: auto auto;
+}
