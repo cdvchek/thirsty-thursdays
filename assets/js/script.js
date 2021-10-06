@@ -67,17 +67,23 @@ function getApi() {
                         let drinkName = data.drinks[0].strDrink;
                         cocktailModHeader = drinkName;
                         // create modal element
-                        modTitle = document.createElement("h4");
+                        var modTitle = document.createElement("h4");
                         modTitle.textContent = cocktailModHeader;
                         newModContent.appendChild(modTitle);
-                        // see recipe button 
-                        
-                        // document.addEventListener('DOMContentLoaded', function() {
-                        //     var elems = document.querySelectorAll('.modal');
-                        //     var instances = M.Modal.init(elems, options);
-                        // });
+                        // create mod footer
 
-                        console.log(cocktailModHeader);
+                        var modFooter = document.createElement("div");
+                        modFooter.classList.add("modal-footer");
+                        newMod.appendChild(modFooter);
+                        var modA = document.createElement("a");
+                        modA.classList.add("modal-close", "waves-effect", "waves-green", "btn-flat");
+                        modA.setAttribute("href","#!");
+                        modFooter.appendChild(modA);
+                        document.addEventListener('DOMContentLoaded', function () {
+                            var elems = document.querySelectorAll('.modal');
+                            var instances = M.Modal.init(elems);
+                        });
+                        
                         // display corresponding cocktail image onto cocktail mod
                         let modImageSource = data.drinks[0].strDrinkThumb;
                         cocktailModImage.src = modImageSource;
@@ -199,9 +205,11 @@ function getApi() {
             prevButtonEl.on('click', displayPrevRecipe);
             nextButtonEl.on('click', displayNextRecipe);
             
+           
 
             displayFirstRecipe();
             //prev and next button functions finished - carsdan dvorachek
+
         });
     pageDisplay(2);
 }
