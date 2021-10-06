@@ -20,7 +20,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main">
 
         <!-- chrissie sparling-cocktail card column and size of 1/3 most likely-->
     <div class="container">
@@ -55,6 +55,8 @@
         <!-- random movie recommendation -->
         <div class="page-2" id="random-movie"></div>
 
+        <!-- Total Recipe Modal -->
+        <div id="modal" class="modal">
         <!-- Total Recipe Modal-->
         <div id="modal1" class="modal">
 
@@ -72,7 +74,12 @@
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
             </div>
         </div>
+        <!-- <button data-target="modal1" class="btn modal-trigger">Modal</button> -->
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">See Recipe</a>
+        
+        <!-- <button id="seeRecipeBtn">See Recipe</button> -->
     </main>
+    
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
