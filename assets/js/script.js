@@ -14,6 +14,7 @@ pageDisplay(1);
 
 //declaring global variable for scoping purposes (used later)
 var drinksArr = [];
+var drinksArrInfo = [];
 var drinkNumber;
 var drinkShowing;
 //page handling finished - carsdan dvorachek
@@ -42,17 +43,147 @@ function getApi() {
         })
         .then(function (data) {
             console.log(data);
+            drinkNumber = data.drinks.length;
+            
             // searching returned cocktails by ID 
             for (let i = 0; i < data.drinks.length; i++) {
                 var idUrl = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + data.drinks[i].idDrink;
                 console.log(idUrl);
-
-
+                
+                
                 fetch(idUrl)
-                    .then(function (response) {
-                        return response.json();
-                    })
-                    .then(function (data) {
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    console.log(data);
+                    //make empty array full of drink info
+                    let drinkInfoObj =
+                    {
+                        drinkName: "",
+                        drinkImage: "",
+                        drinkInstructions: "",
+                        drinkIngredients: [],
+                        drinkIngrAmt: []
+                    }
+                    drinkInfoObj.drinkName = data.drinks[0].strDrink;
+                    drinkInfoObj.drinkImage = data.drinks[0].strDrinkThumb;
+                    drinkInfoObj.drinkInstructions = data.drinks[0].strInstructions;
+                    for (let i = 0; i < 15; i++) {
+                        let listItem = data.drinks[0]["strIngredient" + (i + 1)];
+                        let listItemAmount = data.drinks[0]["strMeasure" + (i + 1)];
+                        // fix empty strings displaying 
+                        if ((listItem !== null) && (listItem != "")) {
+                            drinkInfoObj.drinkIngredients.push(listItem);
+                            drinkInfoObj.drinkIngrAmt.push(listItemAmount);
+                        }
+                    }
+                    drinksArrInfo.push(drinkInfoObj);
+                    console.log(drinksArrInfo);
+                    
+                    //grab modal items
+                    var modNameEl = document.querySelector('#mod-name');
+                    var modImageEl = document.querySelector('#mod-image');
+                    var modInstructionsEl = document.querySelector('#mod-instructions');
+                    
+                    //function that updates modal
+                    function updateModal(){
+                        modNameEl.textContent = drinksArrInfo[drinkShowing].drinkName;
+                        modImageEl.setAttribute('src',drinksArrInfo[drinkShowing].drinkImage);
+                        modInstructionsEl.textContent = drinksArrInfo[drinkShowing].drinkInstructions;
+                        for (let i = 0; i < 15; i++) {
+                            var ingredientEl = document.querySelector('#ingr'+(i+1));
+                            ingredientEl.setAttribute('style','display:none;');
+                            numOfIngr = drinksArrInfo[drinkShowing].drinkIngredients.length;
+                            if(i < numOfIngr){
+                                ingredientEl.textContent = '--' + drinksArrInfo[drinkShowing].drinkIngredients[i] + ' --' + drinksArrInfo[drinkShowing].drinkIngrAmt[i];
+                                console.log(drinkInfoObj.drinkIngredients[i]);
+                                console.log(drinkInfoObj.drinkIngrAmt[i]);
+                                ingredientEl.setAttribute('style','display:block;');
+                            }
+                        }
+                    }
+                    //on click event runs function
+                    var showRecipeBtn = $('#see-recipe-btn');
+                    showRecipeBtn.on('click',updateModal)
+
+                    //prev and next button functions - carsdan dvorachek
+        
+                    let drinkObj =
+                    {
+                        drinkName: "",
+                        drinkImage: ""
+                    }
+                    drinkObj.drinkName = drinkInfoObj.drinkName;
+                    drinkObj.drinkImage = drinkInfoObj.drinkImage;
+                    drinksArr.push(drinkObj);
+                    console.log(drinksArr);
+        
+                    var cocktailNameEl = document.querySelector('#cocktail-name');
+                    var cocktailImageEl = document.querySelector('#cocktail-image');
+                    var listMarkerEl = document.querySelector('#list-marker');
+                    var listMarkerLengthEl = document.querySelector('#list-marker-length');
+        
+                    listMarkerLengthEl.textContent = drinkNumber;
+        
+                    function displayFirstRecipe() {
+                        cocktailNameEl.textContent = drinksArr[0].drinkName;
+                        cocktailImageEl.setAttribute('src', drinksArr[0].drinkImage);
+                        drinkShowing = 0;
+                        listMarkerEl.textContent = drinkShowing + 1;
+                        console.log("display first recipe");
+                    }
+        
+                    function displayLastRecipe() {
+                        cocktailNameEl.textContent = drinksArr[drinkNumber - 1].drinkName;
+                        cocktailImageEl.setAttribute('src', drinksArr[drinkNumber - 1].drinkImage);
+                        drinkShowing = drinkNumber - 1;
+                        listMarkerEl.textContent = drinkShowing + 1;
+                        console.log('display last recipe');
+                    }
+        
+                    function displayNextRecipe() {
+                        if ((drinkShowing + 1) >= drinkNumber) {
+                            displayFirstRecipe();
+                        } else {
+                            drinkShowing++;
+                            displayRecipe(drinkShowing);
+                            listMarkerEl.textContent = drinkShowing + 1;
+                            console.log('display next recipe');
+                        }
+                    }
+        
+                    function displayPrevRecipe() {
+                        if ((drinkShowing - 1) <= -1) {
+                            displayLastRecipe();
+                        } else {
+                            drinkShowing--;
+                            displayRecipe(drinkShowing);
+                            listMarkerEl.textContent = drinkShowing + 1;
+                            console.log('display prev recipe');
+                        }
+                    }
+        
+                    function displayRecipe(index) {
+                        cocktailNameEl.textContent = drinksArr[index].drinkName;
+                        cocktailImageEl.setAttribute('src', drinksArr[index].drinkImage);
+                        drinkShowing = index;
+                        listMarkerEl.textContent = drinkShowing + 1;
+                    }
+                    var prevButtonEl = $('.prev-btn');
+                    var nextButtonEl = $('.next-btn');
+                    
+                    if(i == 0){
+                        prevButtonEl.on('click', displayPrevRecipe);
+                        nextButtonEl.on('click', displayNextRecipe);
+                    }
+                    
+        
+                    displayFirstRecipe();
+                    //prev and next button functions finished - carsdan dvorachek
+
+                        /*
+
                         // display cocktail info onto the cocktail Mod
                         console.log(data);
                         // create new modal element
@@ -122,6 +253,7 @@ function getApi() {
                                 // console.log(node)
                             }
                         }
+                        */
                     });
                     
             }
@@ -129,79 +261,6 @@ function getApi() {
             
             // get api function - marco  
 
-            //prev and next button functions - carsdan dvorachek
-
-            drinkNumber = data.drinks.length;
-            for (let i = 0; i < drinkNumber; i++) {
-                let drinkObj =
-                {
-                    drinkName: "",
-                    drinkImage: ""
-                }
-                drinkObj.drinkName = data.drinks[i].strDrink;
-                drinkObj.drinkImage = data.drinks[i].strDrinkThumb;
-                drinksArr.push(drinkObj);
-            }
-            console.log(drinksArr);
-            console.log("array of my drinks: " + drinksArr[0].drinkName);
-
-
-            var cocktailNameEl = document.querySelector('#cocktail-name');
-            var cocktailImageEl = document.querySelector('#cocktail-image');
-            var listMarkerEl = document.querySelector('#list-marker');
-            var listMarkerLengthEl = document.querySelector('#list-marker-length');
-
-            listMarkerLengthEl.textContent = drinkNumber;
-
-            function displayFirstRecipe() {
-                cocktailNameEl.textContent = drinksArr[0].drinkName;
-                cocktailImageEl.setAttribute('src', drinksArr[0].drinkImage);
-                drinkShowing = 0;
-                listMarkerEl.textContent = drinkShowing + 1;
-            }
-
-            function displayLastRecipe() {
-                cocktailNameEl.textContent = drinksArr[drinkNumber - 1].drinkName;
-                cocktailImageEl.setAttribute('src', drinksArr[drinkNumber - 1].drinkImage);
-                drinkShowing = drinkNumber - 1;
-                listMarkerEl.textContent = drinkShowing + 1;
-            }
-
-            function displayNextRecipe() {
-                if ((drinkShowing + 1) >= drinkNumber) {
-                    displayFirstRecipe();
-                } else {
-                    drinkShowing++;
-                    displayRecipe(drinkShowing);
-                    listMarkerEl.textContent = drinkShowing + 1;
-                }
-            }
-
-            function displayPrevRecipe() {
-                if ((drinkShowing - 1) <= -1) {
-                    displayLastRecipe();
-                } else {
-                    drinkShowing--;
-                    displayRecipe(drinkShowing);
-                    listMarkerEl.textContent = drinkShowing + 1;
-                }
-            }
-
-            function displayRecipe(index) {
-                cocktailNameEl.textContent = drinksArr[index].drinkName;
-                cocktailImageEl.setAttribute('src', drinksArr[index].drinkImage);
-                drinkShowing = index;
-                listMarkerEl.textContent = drinkShowing + 1;
-            }
-            var prevButtonEl = $('.prev-btn');
-            var nextButtonEl = $('.next-btn');
-
-            prevButtonEl.on('click', displayPrevRecipe);
-            nextButtonEl.on('click', displayNextRecipe);
-            
-
-            displayFirstRecipe();
-            //prev and next button functions finished - carsdan dvorachek
         });
     pageDisplay(2);
 }
