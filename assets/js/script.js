@@ -208,7 +208,13 @@ function getApi() {
     pageDisplay(2);
 }
 
-searchBtn.addEventListener('click', getApi);
+searchBtn.addEventListener('click', function(){
+    var cocktailItem = $('input[name="cocktail-input"]').val();
+   if(cocktailItem){
+    getApi()
+   }
+   
+});
 // get api function - marco  
 
 function getMealApi() {
@@ -370,7 +376,12 @@ function getMealApi() {
     pageMealDisplay(2);
 }
 
-searchMealBtn.addEventListener('click', getMealApi);
+searchMealBtn.addEventListener('click', function(){
+    var mealItem = $('input[name="meal-input"]').val();
+    if(mealItem){
+        getMealApi();
+    }
+});
 // get api function - marco  
 
 //modal initialization - carsdan dvorachek
@@ -378,6 +389,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
 });
+
+var goBackBtn = document.getElementById("go-back-btn");
+goBackBtn.addEventListener('click',function(){
+    location.reload();
+})
+
 
 /* See Recipe Modal Trigger Button
 <a class="waves-effect waves-light btn modal-trigger" href="#modal1">See Recipe</a>

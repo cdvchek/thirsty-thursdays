@@ -1,7 +1,7 @@
 body {
     /* background-image: linear-gradient(to right, #AAABB8, #25274D ); */
     background-image: radial-gradient(farthest-corner at 40px 40px,
-    #aaabbb 0%, #25274d 100%);
+    #32a9ad 0%, #7376c2 100%);
     background-attachment: fixed;
     
 }
@@ -10,24 +10,26 @@ h1 {
     color: white;
 }
 
-#searchBtn{
-    color: darkgray;
-    background-color: #fef9c7;
+.custom-card{
+    margin-bottom: 15%;
 }
 
-#search-meal-btn{
-    color: darkgray;
-    background-color: #fef9c7;
-}
+
+
+
 
 #cocktail-icon{
-    padding: 10px 100px 10px 100px;
+    padding: 5% 30% 5% 30%;
+}
+
+#meal-icon{
+    padding: 5% 30% 5% 30%;
 }
 
 #cocktail-name{
     color: white;
     white-space:nowrap;
-    width: 23vw;
+    width: 100%;
     height: 7vh;
     margin: auto auto;
 }
@@ -37,27 +39,15 @@ h2 {
     
 }
 
-#meal-icon {
-    padding: 10px 100px 10px 100px;
-}
-
 #meal-name {
     color:white;
     white-space:nowrap;
-    width: 23vw;
+    width: 100%;
     height: 7vh;
     margin: auto auto;
 }
 
-#see-recipe-btn {
-    color: darkgray;
-    background-color: #fef9c7;
-}
 
-#see-meal-recipe-btn {
-    color: darkgray;
-    background-color: #fef9c7;
-}
 
 #mod-meal-instructions, #mod-instructions{
     margin-top: 30px;
@@ -66,16 +56,48 @@ h2 {
 #mod-ingr-list, #mod-meal-ingr-list {
     font-size: large;
     font-style: italic;
+   
 }
 
 #mod-meal-name, #mod-name{
     margin-bottom: 50px;
     font-size: 5vh;
+    border-style: solid;
+    border-color: rgb(24, 57, 87);
+    background-image: linear-gradient( to right,
+    #464777 0%, #25797c 100%);
+    color: rgb(190, 188, 192);
+    padding: 3%;
+    text-align: left;
+    border-radius: 15px;
+    border-width: 7px;
 }
-
+.modal-footer{
+    background-image: linear-gradient( to right,
+    #474879 0%, rgb(24, 57, 87) 100%);
+}
+#modal-footer-btn{
+    color: rgb(190, 188, 192);
+}
 #modal1, #modal2{
-    background-color: #29252f;
-    color: rgb(183, 171, 192);
+    background-image: radial-gradient(farthest-corner at 40px 40px,
+    #7376c2 0%, #32a9ad 100%);
+    color: rgb(190, 188, 192);
     font-weight:bolder;
     
+}
+
+#meal-image, #cocktail-image{
+    border-style:solid;
+    border-radius: 30px;
+    border-width: 9px;
+    border-color:rgb(24, 57, 87);
+    padding: 0px;
+}
+#meal-card{
+    margin-left: 10px;
+}
+
+#cocktail-card{
+    margin-right: 10px;
 }
