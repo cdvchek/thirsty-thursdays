@@ -3,7 +3,7 @@ body {
     background-image: radial-gradient(farthest-corner at 40px 40px,
     #32a9ad 0%, #7376c2 100%);
     background-attachment: fixed;
-    
+
 }
 
 h1 {
@@ -100,4 +100,8 @@ h2 {
 
 #cocktail-card{
     margin-right: 10px;
+}
+
+* {
+    font-family: 'Architects Daughter', cursive; !important
 }
