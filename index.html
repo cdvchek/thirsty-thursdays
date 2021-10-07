@@ -1,101 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Thirsty Thursdays</title>
-    <!-- Linking Materialize -->
-    <!-- Compiled and minified CSS -->
+
+    <!-- Linking Custom Css -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Linking Materialize Css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
+    
+    <!-- Linking Materialize Js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <!-- Linking TextFit -->
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/textFit.js"></script>
+
 </head>
+
 <body>
+
+    <!-- Web Header (Thirsty Thursdays) -->
     <header class="container">
         <div class="row">
-                        <!--chrissie sparling- title of thirsty thursdays -->
+            <!--chrissie sparling - title of thirsty thursdays -->
             <h1 class="col s8 offset-s2 center-align">Thirsty Thursdays</h1>
         </div>
     </header>
 
+    <!-- Main Content of Website -->
     <main id="main">
 
-        <!-- chrissie sparling-cocktail card column and size of 1/3 most likely-->
-    <div class="container">
-        <div class="row">
-            <div class="col s12 m4 offset-m2 custom-card" id="cocktail-card">
+        <!-- Chrissie Sparling -->
+        <div class="container">
+            <div class="row">
 
-                <!-- cocktail icon -->
-                <img class="col s12" id="cocktail-icon" src="./assets/img/cocktail-icon1.png" alt="cocktail icon">
-                <hr class="col s12">
+                <!-- Cocktail Card -->
+                <div class="col s12 m4 offset-m2 custom-card" id="cocktail-card">
 
-                <!-- page 1 contents (these are the only changing parameters)-->
-                <div class="page-1">
-                    <input type="text" id="ingredientInput" name="cocktail-input" placeholder="Enter cocktail ingredient">
-                    <!-- <button class="btn btn-info" id="add-btn">Add</button> -->
-                    <button class="btn col s6 offset-s3" for="ingredientInput" type="submit" id="searchBtn">search</button>
-                    <ul id="cocktail-list"></ul>
-                </div>
-
-                <!-- page 2 contents (these are the only changing parameters) -->
-                <div class="container page-2">
-                    <div class="row" id="cocktail-recipes">
-                        <h3 class="col s12 center-align" id="cocktail-name"></h3>
-                        <img class="col s12" id="cocktail-image" alt="cocktail-image">
-                    </div>
-                    <button class="btn-flat col s6 prev-btn btn light-blue-text text-lighten-5">&lt;</button>
-                    <button class="btn-flat col s6 next-btn btn light-blue-text text-lighten-5">&gt;</button>
-                    <p class="light-blue-text text-lighten-5">( <span id="list-marker"></span> / <span id="list-marker-length"></span> )</p>
-                    <button data-target="modal1" class="btn modal-trigger col s6 offset-s3" id="see-recipe-btn">See Recipe</button>
-                    <!-- <button class="btn col s6 offset-s3" id="go-back-btn">Go Back</button> -->
-
-                </div>
-            </div>
-
-            <div class="col s12 m4 custom-card" id="meal-card">
-
-                <!-- meal icon -->
-                <img class="col s12" id="meal-icon" src="./assets/img/cooking+food+garden+grill+party+yumminky+icon-1320168255269588014_512 (1).png" alt="meal icon">
-                <hr class="col s12">
-
-                <!-- page 1 contents (these are the only changing parameters)-->
-                <div class="meal-page-1">
-                    <input type="text" id="ingredientMealInput" name="meal-input" placeholder="Enter food ingredient">
-                    <!-- <button class="btn btn-info" id="add-meal-btn">Add</button> -->
-                    <button class="btn col s6 offset-s3" for="ingredientInput" type="submit" id="search-meal-btn">search</button>
-                    <ul id="meal-list"></ul>
-                </div>
-
-                <!-- page 2 contents (these are the only changing parameters) -->
-                <div class="container meal-page-2">
-                    <div class="row" id="meal-recipes">
-                        <h3 class="col s12 center-align" id="meal-name"></h3>
-                        <img class="col s12" id="meal-image" alt="meal-image">
-                    </div>
-                    <button class="btn-flat col s6 prev-meal-btn btn light-blue-text text-lighten-5" >&lt;</button>
-                    <button class="btn-flat col s6 next-meal-btn btn light-blue-text text-lighten-5">&gt;</button>
-                    <p class="light-blue-text text-lighten-5">( <span id="meal-list-marker"></span> / <span id="meal-list-marker-length"></span> )</p>
-                    <button data-target="modal2" class="btn modal-trigger col s6 offset-s3" id="see-meal-recipe-btn">See Recipe</button>
+                    <!-- Cocktail Icon -->
+                    <img class="col s12" id="cocktail-icon" src="./assets/img/cocktail-icon1.png" alt="cocktail icon">
                     
-                </div>
-            </div>
+                    <!-- Line Break -->
+                    <hr class="col s12">
 
-            <button class="btn col s2 offset-s5 " id="go-back-btn">Back</button>
+                    <!-- Page 1 Contents -->
+                    <div class="page-1">
+
+                        <!-- Ingredient Input -->
+                        <input type="text" id="ingredientInput" name="cocktail-input" placeholder="Enter cocktail ingredient">
+                        
+                        <!-- Search Button -->
+                        <button class="btn col s6 offset-s3" for="ingredientInput" type="submit" id="searchBtn">search</button>
+                    
+                    </div>
+
+                    <!-- Page 2 Contents -->
+                    <div class="container page-2">
+
+                        <!-- Cocktail Recipe Overview -->
+                        <div class="row" id="cocktail-recipes">
+
+                            <!-- Cocktail Name -->
+                            <h3 class="col s12 center-align" id="cocktail-name"></h3>
+                            
+                            <!-- Cocktail Image -->
+                            <img class="col s12" id="cocktail-image" alt="cocktail-image">
+                        
+                        </div>
+
+                        <!-- Previous Cocktail Recipe Button -->
+                        <button class="btn-flat col s6 prev-btn btn light-blue-text text-lighten-5">&lt;</button>
+                        
+                        <!-- Next Cocktail Recipe Button -->
+                        <button class="btn-flat col s6 next-btn btn light-blue-text text-lighten-5">&gt;</button>
+                        
+                        <!-- (-/-) Recipe Marker -->
+                        <p class="light-blue-text text-lighten-5">( <span id="list-marker"></span> / <span id="list-marker-length"></span> )</p>
+                        
+                        <!-- See Recipe Button -->
+                        <button data-target="modal1" class="btn modal-trigger col s6 offset-s3" id="see-recipe-btn">See Recipe</button>
+                    
+                    </div>
+                
+                </div>
+
+                <!-- Meal Card -->
+                <div class="col s12 m4 custom-card" id="meal-card">
+
+                    <!-- Meal Icon -->
+                    <img class="col s12" id="meal-icon" src="./assets/img/cooking+food+garden+grill+party+yumminky+icon-1320168255269588014_512 (1).png" alt="meal icon">
+                    
+                    <!-- Line Break -->
+                    <hr class="col s12">
+                    
+                    <!-- page 1 contents -->
+                    <div class="meal-page-1">
+
+                        <!-- Meal Ingredients Input -->
+                        <input type="text" id="ingredientMealInput" name="meal-input" placeholder="Enter food ingredient">
+                        
+                        <!-- Search Meal Button -->
+                        <button class="btn col s6 offset-s3" for="ingredientInput" type="submit" id="search-meal-btn">search</button>
+                    
+                    </div>
+
+                    <!-- Page 2 Contents -->
+                    <div class="container meal-page-2">
+
+                        <!-- Meal Recipes Overview -->
+                        <div class="row" id="meal-recipes">
+                            
+                            <!-- Meal Name -->
+                            <h3 class="col s12 center-align" id="meal-name"></h3>
+
+                            <!-- Meal Image -->
+                            <img class="col s12" id="meal-image" alt="meal-image">
+
+                        </div>
+
+                        <!-- Previous Meal Button -->
+                        <button class="btn-flat col s6 prev-meal-btn btn light-blue-text text-lighten-5" >&lt;</button>
+                        
+                        <!-- Next Meal Button -->
+                        <button class="btn-flat col s6 next-meal-btn btn light-blue-text text-lighten-5">&gt;</button>
+                        
+                        <!-- (-/-) Meal Marker -->
+                        <p class="light-blue-text text-lighten-5">( <span id="meal-list-marker"></span> / <span id="meal-list-marker-length"></span> )</p>
+                        
+                        <!-- See Meal Recipe Button -->
+                        <button data-target="modal2" class="btn modal-trigger col s6 offset-s3" id="see-meal-recipe-btn">See Recipe</button>
+                    
+                    </div>
+                
+                </div>
+
+                <!-- Back Button -->
+                <button class="btn col s2 offset-s5 " id="go-back-btn">Back</button>
+            
+            </div>
         </div>
-    </div>
-        <!-- random movie recommendation -->
-        <div class="page-2" id="random-movie"></div>
 
         <!-- Total Cocktail Recipe Modal-->
         <div id="modal1" class="modal">
 
             <!-- Main Content -->
             <div class="modal-content row">
+
+                <!-- Modal Cocktail Name -->
                 <h4 class="col s12 center-align" id="mod-name"></h4>
+
+                <!-- Modal Cocktail Image -->
                 <img class="responsive-img col s12 m6 circle push-m6" id="mod-image" src="#" alt="picture of cocktail/meal">
+                
+                <!-- Modal Cocktail Ingredients List -->
                 <ul class="col s12 m6 center-align pull-m6" id="mod-ingr-list">
                     <li id="ingr1"></li>
                     <li id="ingr2"></li>
@@ -113,24 +174,32 @@
                     <li id="ingr14"></li>
                     <li id="ingr15"></li>
                 </ul>
-                <div class="col s12 center" id="mod-instructions">
-                </div>
+
+                <!-- Modal Cocktail Instructions -->
+                <div class="col s12 center" id="mod-instructions"></div>
+
             </div>
 
-            <!-- Close button -->
+            <!-- Modal Cocktail Close button -->
             <div class="modal-footer">
                 <a href="#!" id="modal-footer-btn" class="modal-close waves-effect waves-green btn-flat">Close</a>
             </div>
+
         </div>
 
+        <!-- Total Meal Recipe Modal -->
         <div id="modal2" class="modal">
 
             <!-- Main Content -->
-            
-                <div class="modal-content row">
+            <div class="modal-content row">
+
+                <!-- Modal Meal Name -->
                 <h4 class="col s12 center-align" id="mod-meal-name"></h4>
-                
+
+                <!-- Modal Meal Image -->
                 <img class="responsive-img col s12 m6 circle push-m6" id="mod-meal-image" src="#" alt="picture of cocktail/meal">
+                
+                <!-- Modal Meal Ingredients List -->
                 <ul class="col s12 m6 pull-m6 center" id="mod-meal-ingr-list">
                     <li id="meal-ingr1"></li>
                     <li id="meal-ingr2"></li>
@@ -152,26 +221,27 @@
                     <li id="meal-ingr18"></li>
                     <li id="meal-ingr19"></li>
                     <li id="meal-ingr20"></li>
-                    
                 </ul>
-                <div class="col s12 center" id="mod-meal-instructions">
-                </div>
-            
-                </div>
-                <!-- Close button -->
-                    <div class="modal-footer ">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                    </div>
-                
-            
+
+                <!-- Modal Meal Instructions -->
+                <div class="col s12 center" id="mod-meal-instructions"></div>
+
+            </div>
+
+            <!-- Modal Meal Close button -->
+            <div class="modal-footer ">
+                <a href="#!" id="meal-modal-footer-btn" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+
         </div>
-        <!-- <button data-target="modal1" class="btn modal-trigger">Modal</button> -->
-        <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">See Recipe</a> -->
-        
-        <!-- <button id="seeRecipeBtn">See Recipe</button> -->
+
     </main>
-    
+
+    <!-- Linking jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Linking Custom Js -->
     <script src="./assets/js/script.js"></script>
+    
 </body>
 </html>
