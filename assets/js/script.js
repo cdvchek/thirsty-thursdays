@@ -293,7 +293,7 @@ function getMealApi() {
                                 ingredientMealEl.setAttribute('style','display:none;');
                                 numOfMealIngr = mealsArrInfo[mealShowing].mealIngredients.length;
                                 if(i < numOfMealIngr){
-                                    ingredientMealEl.textContent = '--' + mealsArrInfo[mealShowing].mealIngredients[i] + ' --' + mealsArrInfo[mealShowing].mealIngrAmt[i];
+                                    ingredientMealEl.textContent =  mealsArrInfo[mealShowing].mealIngredients[i] + ' -- ' + mealsArrInfo[mealShowing].mealIngrAmt[i];
                                     console.log(mealInfoObj.mealIngredients[i]);
                                     console.log(mealInfoObj.mealIngrAmt[i]);
                                     ingredientMealEl.setAttribute('style','display:block;');
