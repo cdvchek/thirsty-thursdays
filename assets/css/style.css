@@ -3,20 +3,25 @@ body {
     background-image: radial-gradient(farthest-corner at 40px 40px,
     #32a9ad 0%, #7376c2 100%);
     background-attachment: fixed;
-    
+
 }
 
 h1 {
     color: white;
 }
 
+h2 {
+    color: white; 
+}
+
 .custom-card{
     margin-bottom: 15%;
 }
 
-
-
-
+.modal-footer{
+    background-image: linear-gradient( to right,
+    #474879 0%, rgb(24, 57, 87) 100%);
+}
 
 #cocktail-icon{
     padding: 5% 30% 5% 30%;
@@ -34,11 +39,6 @@ h1 {
     margin: auto auto;
 }
 
-h2 {
-    color: white;
-    
-}
-
 #meal-name {
     color:white;
     white-space:nowrap;
@@ -47,14 +47,13 @@ h2 {
     margin: auto auto;
 }
 
-
-
 #mod-meal-instructions, #mod-instructions{
     margin-top: 30px;
     font-size: 20px;
 }
+
 #mod-ingr-list, #mod-meal-ingr-list {
-    font-size: large;
+    font-size: 20px;
     font-style: italic;
    
 }
@@ -72,19 +71,20 @@ h2 {
     border-radius: 15px;
     border-width: 7px;
 }
-.modal-footer{
-    background-image: linear-gradient( to right,
-    #474879 0%, rgb(24, 57, 87) 100%);
-}
+
 #modal-footer-btn{
     color: rgb(190, 188, 192);
 }
+
+#meal-modal-footer-btn{
+    color: rgb(190, 188, 192);
+}
+
 #modal1, #modal2{
     background-image: radial-gradient(farthest-corner at 40px 40px,
     #7376c2 0%, #32a9ad 100%);
     color: rgb(190, 188, 192);
     font-weight:bolder;
-    
 }
 
 #meal-image, #cocktail-image{
@@ -100,4 +100,8 @@ h2 {
 
 #cocktail-card{
     margin-right: 10px;
+}
+
+* {
+    font-family: 'Architects Daughter';
 }
