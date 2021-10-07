@@ -53,7 +53,7 @@ h2 {
 }
 
 #mod-ingr-list, #mod-meal-ingr-list {
-    font-size: large;
+    font-size: 20px;
     font-style: italic;
    
 }
@@ -103,5 +103,5 @@ h2 {
 }
 
 * {
-    font-family: 'Architects Daughter', cursive; !important
+    font-family: 'Architects Daughter';
 }
