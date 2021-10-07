@@ -118,7 +118,7 @@ function getApi() {
                                 ingredientEl.setAttribute('style','display:none;');
                                 numOfIngr = drinksArrInfo[drinkShowing].drinkIngredients.length;
                                 if(i < numOfIngr){
-                                    ingredientEl.textContent = '--' + drinksArrInfo[drinkShowing].drinkIngredients[i] + ' --' + drinksArrInfo[drinkShowing].drinkIngrAmt[i];
+                                    ingredientEl.textContent = drinksArrInfo[drinkShowing].drinkIngredients[i] + ' -- ' + drinksArrInfo[drinkShowing].drinkIngrAmt[i];
                                     console.log(drinkInfoObj.drinkIngredients[i]);
                                     console.log(drinkInfoObj.drinkIngrAmt[i]);
                                     ingredientEl.setAttribute('style','display:block;');
